@@ -34,7 +34,7 @@ public class linearSearch254107020257 { // Replace 12345 with your student ID
         if (index != -1) {
             System.out.println("The key in the array is located at index position: " + index);
         } else {
-            System.out.println("The key was not found in the array.");
+            System.out.println("Key not found."); // Modified output
         }
 
         input.close();
