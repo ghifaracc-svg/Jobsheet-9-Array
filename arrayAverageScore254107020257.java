@@ -1,32 +1,41 @@
-import java.util.Scanner; // Step 3: Add Scanner library
+import java.util.Scanner;
 
-public class arrayAverageScore254107020257 { // Step 1: File and class name (XX = your student ID)
-    public static void main(String[] args) { // Step 2: Basic Java structure with main()
+public class arrayAverageScore254107020257 { // 254107020257 = your student ID
+    public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in); // Step 3: Create Scanner object
+        Scanner input = new Scanner(System.in);
 
-        int[] score = new int[10]; // Step 4: Declare integer array with capacity 10
-        int total = 0;             // Declare total variable
-        double average;            // Declare average variable
+        System.out.print("Enter the number of students: ");
+        int n = input.nextInt(); // number of students
 
-        // Step 5: Input scores using loop
-        for (int i = 0; i < score.length; i++) {
-            System.out.print("Enter score for student " + (i + 1) + ": ");
+        int[] score = new int[n]; // dynamic array based on user input
+
+        int totalPass = 0, totalFail = 0; // sum of passed and failed scores
+        int countPass = 0, countFail = 0; // counters for passed and failed students
+
+        // Input scores
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter the final score " + i + ": ");
             score[i] = input.nextInt();
+
+            // Check if passed or failed
+            if (score[i] > 70) {
+                totalPass += score[i];
+                countPass++;
+            } else {
+                totalFail += score[i];
+                countFail++;
+            }
         }
 
-        // Step 6: Calculate total using loop
-        for (int i = 0; i < score.length; i++) {
-            total += score[i];
-        }
+        // Calculate averages (avoid division by zero)
+        double avgPass = (countPass > 0) ? (double) totalPass / countPass : 0;
+        double avgFail = (countFail > 0) ? (double) totalFail / countFail : 0;
 
-        // Step 7: Calculate average
-        average = (double) total / score.length;
+        // Display results
+        System.out.println("\nThe average score of students who passed is " + avgPass);
+        System.out.println("The average score of students who failed is " + avgFail);
 
-        // Display the result
-        System.out.println("\nTotal score of 10 students: " + total);
-        System.out.println("Average score: " + average);
-
-        input.close(); // Close scanner
+        input.close();
     }
 }
