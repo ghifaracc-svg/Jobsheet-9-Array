@@ -1,26 +1,42 @@
-import java.util.Scanner; // Import Scanner library for user input
+import java.util.Scanner; // Import Scanner for user input
 
 public class linearSearch254107020257 { // Replace 12345 with your student ID
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int[] data = {3, 7, 1, 9, 5, 2, 8}; // Array data
+        // Step 1: Ask for number of elements
+        System.out.print("Enter the number of elements: ");
+        int n = input.nextInt();
+
+        int[] data = new int[n]; // Create array with size n
+
+        // Step 2: Ask user to input array elements
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Element " + (i) + ": ");
+            data[i] = input.nextInt();
+        }
+
+        // Step 3: Ask user for the key to search
         System.out.print("Enter the number to search: ");
-        int key = input.nextInt(); // Number to be searched
+        int key = input.nextInt();
 
-        boolean found = false; // Flag to check if found
-        int result = -1; // Store index if found
-
-        // Linear search process
-        for (int i = 0; i < data.length; i++) {
+        // Step 4: Linear search process
+        int index = -1; // store the index if found
+        for (int i = 0; i < n; i++) {
             if (data[i] == key) {
-                found = true;
-                result = i;
-                break; // Exit loop when found
+                index = i;
+                break; // stop when found
             }
         }
 
-        // Display results
-        System.out.println("The key in the array is located at index position: " + result);
+        // Step 5: Display result
+        if (index != -1) {
+            System.out.println("The key in the array is located at index position: " + index);
+        } else {
+            System.out.println("The key was not found in the array.");
+        }
+
+        input.close();
     }
 }
